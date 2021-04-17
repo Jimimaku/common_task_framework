@@ -8,7 +8,7 @@ tests:
 		coverage \
 		format \
 		install \
-		lint \
+		linter \
 		mutants \
 		tests
 
