@@ -8,6 +8,7 @@ RUN pip install \
     mutmut \
     pylint \
     pytest \
-    pytest-cov
+    pytest-cov \
+    typer
 RUN curl -fsSL https://git.io/shellspec | sh -s -- --yes
-ENV PATH="/root/.local/lib/shellspec:$PATH"
+ENV PATH="/root/.local/lib/shellspec:/workdir/src:$PATH"
