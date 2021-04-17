@@ -1,4 +1,4 @@
-tests: install
+tests:
 	shellspec
 	pytest --verbose
 

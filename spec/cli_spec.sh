@@ -1,6 +1,6 @@
 #shellcheck shell=sh
 
 It 'exists'
-  When call geci-ctf Mundo
-  The output should eq 'Hola Mundo'
+  When call geci-ctf --help
+  The first line of output should eq "Usage: main.py [OPTIONS] NAME"
 End
