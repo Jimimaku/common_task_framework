@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def load_dataset(path_to_complete_dataset: str):
+def load_complete_dataset(path_to_complete_dataset: str):
     data = pd.read_csv(path_to_complete_dataset)
     return data
 
