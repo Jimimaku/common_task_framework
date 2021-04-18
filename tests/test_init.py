@@ -97,6 +97,7 @@ def test_save_training_dataset():
     assert expected_first_column == obtained_first_column
     os.remove(path_to_training)
 
+
 def test_save_testing_dataset():
     path_to_testing = ctf.get_testing_path(path_to_complete_dataset)
     if os.path.exists(path_to_testing):

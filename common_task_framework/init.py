@@ -71,6 +71,7 @@ def save_training_dataset(data: pd.DataFrame, path_to_complete_dataset: str):
     path_to_training = get_training_path(path_to_complete_dataset)
     training_dataset.to_csv(path_to_training, index=False)
 
+
 def save_testing_dataset(data: pd.DataFrame, path_to_complete_dataset: str):
     testing_dataset = get_testing_dataset(data)
     path_to_testing = get_testing_path(path_to_complete_dataset)
