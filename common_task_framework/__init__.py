@@ -1,1 +1,1 @@
-from .init import *  # noqa
+from .init import Initializator  # noqa
