@@ -53,4 +53,4 @@ linter:
 	$(call lint, tests)
 
 mutants: install
-	mutmut run --paths-to-mutate ${module} --runner "shellspec"
+	mutmut run --paths-to-mutate ${module} --runner "make tests"
