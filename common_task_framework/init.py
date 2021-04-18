@@ -1,3 +1,5 @@
+from os import path
+from pathlib import Path
 import numpy as np
 import pandas as pd
 
@@ -44,3 +46,26 @@ def get_behind_the_wall_solution(data: pd.DataFrame):
     testing_length = get_testing_length(data)
     solution = data[["id", "target"]].tail(testing_length)
     return solution
+
+
+def get_training_path(path_to_complete_dataset: str):
+    directory = str(Path(path_to_complete_dataset).parents[0])
+    training_path = path.join(directory, "train.csv")
+    return training_path
+
+
+def get_testing_path(path_to_complete_dataset: str):
+    directory = str(Path(path_to_complete_dataset).parents[0])
+    testing_path = path.join(directory, "test.csv")
+    return testing_path
+
+
+def get_example_submission_path(path_to_complete_dataset: str):
+    directory = str(Path(path_to_complete_dataset).parents[0])
+    testing_path = path.join(directory, "example_submission.csv")
+    return testing_path
+
+
+def save_training_dataset(data: pd.DataFrame, path_to_complete_dataset: str):
+    path_to_training = get_training_path(path_to_complete_dataset)
+    data.to_csv(path_to_training, index=False)

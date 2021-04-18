@@ -1,4 +1,6 @@
 import common_task_framework as ctf
+import os
+import pandas as pd
 
 path_to_complete_dataset = "tests/test_data/complete_dataset.csv"
 data = ctf.load_complete_dataset(path_to_complete_dataset)
@@ -64,3 +66,33 @@ def test_get_behind_the_wall_solution():
     obtained_solution_target = solution["target"].iloc[0]
     expected_solution_target = data["target"].iloc[ctf.get_training_length(data)]
     assert expected_solution_target == obtained_solution_target
+
+
+def test_get_training_path():
+    obtained_path = ctf.get_training_path(path_to_complete_dataset)
+    expected_path = "tests/test_data/train.csv"
+    assert expected_path == obtained_path
+
+
+def test_get_testing_path():
+    obtained_path = ctf.get_testing_path(path_to_complete_dataset)
+    expected_path = "tests/test_data/test.csv"
+    assert expected_path == obtained_path
+
+
+def test_get_example_submission_path():
+    obtained_path = ctf.get_example_submission_path(path_to_complete_dataset)
+    expected_path = "tests/test_data/example_submission.csv"
+    assert expected_path == obtained_path
+
+
+def test_save_training_dataset():
+    path_to_training = ctf.get_training_path(path_to_complete_dataset)
+    if os.path.exists(path_to_training):
+        os.remove(path_to_training)
+    ctf.save_training_dataset(data, path_to_complete_dataset)
+    assert os.path.exists(path_to_training)
+    obtained_first_column = pd.read_csv(path_to_training).columns[0]
+    expected_first_column = "id"
+    assert expected_first_column == obtained_first_column
+    os.remove(path_to_training)
