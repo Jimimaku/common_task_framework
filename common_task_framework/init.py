@@ -1,2 +1,6 @@
+import pandas as pd
+
+
 def init(path_to_complete_dataset: str):
-    typer.echo(f"Hello {name}")
+    data = pd.read_csv(path_to_complete_dataset)
+    return data
