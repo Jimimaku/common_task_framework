@@ -6,21 +6,27 @@ def load_complete_dataset(path_to_complete_dataset: str):
     return data
 
 
-def get_trainig_length(data: pd.DataFrame):
+def get_training_length(data: pd.DataFrame):
     total_length = len(data)
     training_proportion = 0.8
-    trainig_length = round(total_length * training_proportion)
-    return trainig_length
+    training_length = round(total_length * training_proportion)
+    return training_length
 
 
 def get_testing_length(data: pd.DataFrame):
     total_length = len(data)
-    training_length = get_trainig_length(data)
+    training_length = get_training_length(data)
     testing_length = total_length - training_length
     return testing_length
 
 
-def get_trainig_dataset(data: pd.DataFrame):
-    trainig_length = get_trainig_length(data)
-    train = data.head(trainig_length)
+def get_training_dataset(data: pd.DataFrame):
+    training_length = get_training_length(data)
+    train = data.head(training_length)
     return train
+
+
+def get_testing_dataset(data: pd.DataFrame):
+    testing_length = get_testing_length(data)
+    test = data.iloc[-testing_length:, data.columns != "target"]
+    return test

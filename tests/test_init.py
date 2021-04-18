@@ -11,8 +11,8 @@ def test_load_complete_dataset():
     assert expected_length == obtained_length
 
 
-def test_get_trainig_length():
-    obtained_length = ctf.get_trainig_length(data)
+def test_get_training_length():
+    obtained_length = ctf.get_training_length(data)
     expected_length = round(27 * 0.8)
     assert expected_length == obtained_length
 
@@ -23,10 +23,10 @@ def test_get_testing_length():
     assert expected_length == obtained_length
 
 
-def test_get_trainig_dataset():
-    train = ctf.get_trainig_dataset(data)
+def test_get_training_dataset():
+    train = ctf.get_training_dataset(data)
     obtained_rows, obtained_cols = train.shape
-    expected_rows = ctf.get_trainig_length(data)
+    expected_rows = ctf.get_training_length(data)
     assert expected_rows == obtained_rows
     expected_cols = data.shape[1]
     assert expected_cols == obtained_cols
