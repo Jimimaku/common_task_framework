@@ -51,3 +51,16 @@ def test_get_example_submission():
     assert expected_column_names == obtained_column_names
     obtained_example_target = example_submission["target"].iloc[0]
     assert obtained_example_target >= 0
+
+
+def test_get_behind_the_wall_solution():
+    solution = ctf.get_behind_the_wall_solution(data)
+    obtained_rows = len(solution)
+    expected_rows = ctf.get_testing_length(data)
+    assert expected_rows == obtained_rows
+    obtained_column_names = list(solution.columns)
+    expected_column_names = ["id", "target"]
+    assert expected_column_names == obtained_column_names
+    obtained_solution_target = solution["target"].iloc[0]
+    expected_solution_target = data["target"].iloc[ctf.get_training_length(data)]
+    assert expected_solution_target == obtained_solution_target
