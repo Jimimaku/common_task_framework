@@ -1,6 +1,12 @@
 import pandas as pd
 
 
-def init(path_to_complete_dataset: str):
+def load_dataset(path_to_complete_dataset: str):
     data = pd.read_csv(path_to_complete_dataset)
     return data
+
+
+def get_trainig_length(data: pd.DataFrame):
+    total_length = len(data)
+    trainig_length = round(total_length * 0.8)
+    return trainig_length

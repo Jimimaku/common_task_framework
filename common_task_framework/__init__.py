@@ -1,1 +1,1 @@
-from .init import init  # noqa
+from .init import load_dataset, get_trainig_length  # noqa
