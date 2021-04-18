@@ -1,9 +1,12 @@
 import typer
 
+app = typer.Typer()
 
-def main(name: str):
-    typer.echo(f"Hola {name}")
+
+@app.command()
+def init(complete_dataset_path: str):
+    typer.echo(f"Hello {name}")
 
 
 if __name__ == "__main__":  # pragma: no mutate
-    typer.run(main)
+    app()
