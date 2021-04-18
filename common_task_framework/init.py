@@ -82,3 +82,10 @@ def save_example_submission(data: pd.DataFrame, path_to_complete_dataset: str):
     example_submission = get_example_submission(data)
     path_to_example_submission = get_example_submission_path(path_to_complete_dataset)
     example_submission.to_csv(path_to_example_submission, index=False)
+
+
+def init(path_to_complete_dataset: str):
+    data = load_complete_dataset(path_to_complete_dataset)
+    save_training_dataset(data, path_to_complete_dataset)
+    save_testing_dataset(data, path_to_complete_dataset)
+    save_example_submission(data, path_to_complete_dataset)

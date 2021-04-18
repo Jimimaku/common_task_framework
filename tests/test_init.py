@@ -120,3 +120,16 @@ def test_save_example_submission():
     expected_first_column = "id"
     assert expected_first_column == obtained_first_column
     os.remove(path_to_example_submission)
+
+
+def test_init():
+    ctf.init(path_to_complete_dataset)
+    path_to_training = ctf.get_training_path(path_to_complete_dataset)
+    assert os.path.exists(path_to_training)
+    os.remove(path_to_training)
+    path_to_testing = ctf.get_testing_path(path_to_complete_dataset)
+    assert os.path.exists(path_to_testing)
+    os.remove(path_to_testing)
+    path_to_example_submission = ctf.get_example_submission_path(path_to_complete_dataset)
+    assert os.path.exists(path_to_example_submission)
+    os.remove(path_to_example_submission)
