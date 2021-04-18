@@ -28,6 +28,5 @@ def test_get_trainig_dataset():
     obtained_rows, obtained_cols = train.shape
     expected_rows = ctf.get_trainig_length(data)
     assert expected_rows == obtained_rows
-    n_cols_data = data.shape[1]
-    expected_cols = n_cols_data - 1
+    expected_cols = data.shape[1]
     assert expected_cols == obtained_cols

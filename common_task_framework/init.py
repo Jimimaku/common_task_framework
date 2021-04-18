@@ -18,3 +18,9 @@ def get_testing_length(data: pd.DataFrame):
     training_length = get_trainig_length(data)
     testing_length = total_length - training_length
     return testing_length
+
+
+def get_trainig_dataset(data: pd.DataFrame):
+    trainig_length = get_trainig_length(data)
+    train = data.head(trainig_length)
+    return train
