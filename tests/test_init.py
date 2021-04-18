@@ -43,8 +43,11 @@ def test_get_testing_dataset():
 
 def test_get_example_submission():
     example_submission = ctf.get_example_submission(data)
-    obtained_rows, obtained_cols = example_submission.shape
+    obtained_rows = len(example_submission)
     expected_rows = ctf.get_testing_length(data)
     assert expected_rows == obtained_rows
-    expected_cols = 2
-    assert expected_cols == obtained_cols
+    obtained_column_names = list(example_submission.columns)
+    expected_column_names = ["id", "target"]
+    assert expected_column_names == obtained_column_names
+    obtained_example_target = example_submission["target"].iloc[0]
+    assert obtained_example_target >= 0
