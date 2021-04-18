@@ -8,7 +8,8 @@ def load_dataset(path_to_complete_dataset: str):
 
 def get_trainig_length(data: pd.DataFrame):
     total_length = len(data)
-    trainig_length = round(total_length * 0.8)
+    training_proportion = 0.8
+    trainig_length = round(total_length * training_proportion)
     return trainig_length
 
 
