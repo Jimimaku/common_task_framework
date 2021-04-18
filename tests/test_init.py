@@ -30,3 +30,12 @@ def test_get_trainig_dataset():
     assert expected_rows == obtained_rows
     expected_cols = data.shape[1]
     assert expected_cols == obtained_cols
+
+
+def test_get_testing_dataset():
+    test = ctf.get_testing_dataset(data)
+    obtained_rows, obtained_cols = test.shape
+    expected_rows = ctf.get_testing_length(data)
+    assert expected_rows == obtained_rows
+    expected_cols = data.shape[1] - 1
+    assert expected_cols == obtained_cols
