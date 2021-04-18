@@ -62,8 +62,8 @@ def get_testing_path(path_to_complete_dataset: str):
 
 def get_example_submission_path(path_to_complete_dataset: str):
     directory = str(Path(path_to_complete_dataset).parents[0])
-    testing_path = path.join(directory, "example_submission.csv")
-    return testing_path
+    example_submission_path = path.join(directory, "example_submission.csv")
+    return example_submission_path
 
 
 def save_training_dataset(data: pd.DataFrame, path_to_complete_dataset: str):
@@ -76,3 +76,9 @@ def save_testing_dataset(data: pd.DataFrame, path_to_complete_dataset: str):
     testing_dataset = get_testing_dataset(data)
     path_to_testing = get_testing_path(path_to_complete_dataset)
     testing_dataset.to_csv(path_to_testing, index=False)
+
+
+def save_example_submission(data: pd.DataFrame, path_to_complete_dataset: str):
+    example_submission = get_example_submission(data)
+    path_to_example_submission = get_example_submission_path(path_to_complete_dataset)
+    example_submission.to_csv(path_to_example_submission, index=False)
