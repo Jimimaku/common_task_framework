@@ -38,3 +38,9 @@ def get_example_submission(data: pd.DataFrame):
     example_submission = data.iloc[-testing_length:, data.columns == "id"]
     example_submission["target"] = np.random.rand(testing_length)
     return example_submission
+
+
+def get_behind_the_wall_solution(data: pd.DataFrame):
+    testing_length = get_testing_length(data)
+    solution = data[["id", "target"]].tail(testing_length)
+    return solution
