@@ -4,8 +4,8 @@ app = typer.Typer()
 
 
 @app.command()
-def init(complete_dataset_path: str):
-    typer.echo(f"Hello {name}")
+def init(path_to_complete_dataset: str):
+    ctf.init(path_to_complete_dataset)
 
 
 if __name__ == "__main__":
