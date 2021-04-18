@@ -8,5 +8,5 @@ def init(complete_dataset_path: str):
     typer.echo(f"Hello {name}")
 
 
-if __name__ == "__main__":  # pragma: no mutate
+if __name__ == "__main__":
     app()
