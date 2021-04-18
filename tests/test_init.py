@@ -39,3 +39,12 @@ def test_get_testing_dataset():
     assert expected_rows == obtained_rows
     expected_cols = data.shape[1] - 1
     assert expected_cols == obtained_cols
+
+
+def test_get_example_submission():
+    example_submission = ctf.get_example_submission(data)
+    obtained_rows, obtained_cols = example_submission.shape
+    expected_rows = ctf.get_testing_length(data)
+    assert expected_rows == obtained_rows
+    expected_cols = 2
+    assert expected_cols == obtained_cols
