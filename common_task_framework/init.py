@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 
@@ -30,3 +31,10 @@ def get_testing_dataset(data: pd.DataFrame):
     testing_length = get_testing_length(data)
     test = data.iloc[-testing_length:, data.columns != "target"]
     return test
+
+
+def get_example_submission(data: pd.DataFrame):
+    testing_length = get_testing_length(data)
+    example_submission = data.iloc[-testing_length:, data.columns == "id"]
+    example_submission["target"] = np.random.rand(testing_length)
+    return example_submission
