@@ -36,6 +36,9 @@ clean:
 	rm --force --recursive tests/__pycache__
 	rm --force .mutmut-cache
 	rm --force coverage.xml
+	rm --force tests/test_data/example_submission.csv
+	rm --force tests/test_data/test.csv
+	rm --force tests/test_data/train.csv
 
 coverage: install
 	pytest --cov=${module} --cov-report=xml --verbose && \
