@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 path_to_complete_dataset = "tests/test_data/complete_dataset.csv"
-ctf = common_task_framework.Initializator(path_to_complete_dataset)
+ctf = common_task_framework.Referee(path_to_complete_dataset)
 
 
 def test_load_complete_dataset():

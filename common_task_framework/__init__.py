@@ -1,1 +1,1 @@
-from .init import Initializator  # noqa
+from .referee import Referee  # noqa

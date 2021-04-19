@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 
-class Initializator:
+class Referee:
     def __init__(self, path_to_complete_dataset: str):
         self.path_to_complete_dataset = path_to_complete_dataset
         self.data = self.load_complete_dataset()
