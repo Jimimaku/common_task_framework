@@ -1,1 +1,2 @@
 # Common Task Framework
+[![🏝️ Tests](https://github.com/IslasGECI/common_task_framework/actions/workflows/actions.yml/badge.svg)](https://github.com/IslasGECI/common_task_framework/actions/workflows/actions.yml)
