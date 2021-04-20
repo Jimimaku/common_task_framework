@@ -134,9 +134,10 @@ def test_init():
     assert os.path.exists(path_to_example_submission)
     os.remove(path_to_example_submission)
 
+
 def test_load_submission():
     submission_path = "tests/test_data/test_submission.csv"
-    submission = ctf.load_submission(submission_path)
+    submission = common_task_framework.load_submission(submission_path)
     obtained_length = len(submission)
     expected_length = ctf.get_testing_length()
     assert expected_length == obtained_length

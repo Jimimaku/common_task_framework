@@ -80,3 +80,8 @@ class Referee:
         self.save_training_dataset()
         self.save_testing_dataset()
         self.save_example_submission()
+
+
+def load_submission(path_to_submision):
+    submission = pd.read_csv(path_to_submision)
+    return submission

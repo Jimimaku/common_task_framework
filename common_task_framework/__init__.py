@@ -1,1 +1,1 @@
-from .referee import Referee  # noqa
+from .referee import Referee, load_submission  # noqa
