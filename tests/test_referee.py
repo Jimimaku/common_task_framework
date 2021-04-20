@@ -37,11 +37,12 @@ def test_get_training_dataset():
 
 def test_get_testing_dataset():
     test = ctf.get_testing_dataset()
-    obtained_rows, obtained_cols = test.shape
+    obtained_rows = len(test)
     expected_rows = ctf.get_testing_length()
     assert expected_rows == obtained_rows
-    expected_cols = ctf.data.shape[1] - 1
-    assert expected_cols == obtained_cols
+    obtained_column_names = list(test.columns)
+    expected_column_names = ["x"]
+    assert obtained_column_names == expected_column_names
 
 
 def test_get_example_submission():
