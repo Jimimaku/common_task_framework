@@ -1,5 +1,6 @@
 from os import path
 from pathlib import Path
+import glob
 import numpy as np
 import pandas as pd
 
@@ -7,6 +8,12 @@ import pandas as pd
 def load_submission(path_to_submission):
     submission = pd.read_csv(path_to_submission, index_col="id")
     return submission
+
+
+def get_submission_list(path_to_submission_directory):
+    submission_list_path = path.join(path_to_submission_directory, "*_submission.csv")
+    submission_list = glob.glob(submission_list_path)
+    return submission_list
 
 
 class Referee:
@@ -94,6 +101,6 @@ class Referee:
         mean_absolute_error = error.abs().mean()
         return mean_absolute_error
 
-    def evaluate(self, path_to_submission):
+    def evaluate_single_submission(self, path_to_submission):
         mean_absolute_error = self.get_mean_absolute_error(path_to_submission)
         print(f"Submission: {path_to_submission}\nMean absolute error: {mean_absolute_error}")
