@@ -93,3 +93,7 @@ class Referee:
         error = solution["target"] - submission["target"]
         mean_absolute_error = error.abs().mean()
         return mean_absolute_error
+
+    def evaluate(self, path_to_submission):
+        mean_absolute_error = self.get_mean_absolute_error(path_to_submission)
+        print(f"Submission: {path_to_submission}\nMean absolute error: {mean_absolute_error}")
