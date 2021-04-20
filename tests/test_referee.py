@@ -5,6 +5,7 @@ import pandas as pd
 path_to_complete_dataset = "tests/test_data/complete_dataset.csv"
 ctf = common_task_framework.Referee(path_to_complete_dataset)
 path_to_submission = "tests/test_data/test_submission.csv"
+path_to_submission_directory = "tests/test_data"
 
 
 def test_load_complete_dataset():
@@ -148,3 +149,14 @@ def test_mean_absolute_error():
     obtained_mean_absolute_error = round(ctf.get_mean_absolute_error(path_to_submission), 16)
     expected_mean_absolute_error = 0.4246
     assert expected_mean_absolute_error == obtained_mean_absolute_error
+
+
+def test_get_submission_list():
+    obtained_submission_list = common_task_framework.get_submission_list(
+        path_to_submission_directory
+    )
+    expected_submission_list = [
+        "tests/test_data/test_submission.csv",
+        "tests/test_data/test2_submission.csv",
+    ]
+    assert expected_submission_list == obtained_submission_list
