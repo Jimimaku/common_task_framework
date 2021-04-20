@@ -159,4 +159,4 @@ def test_get_submission_list():
         "tests/test_data/test_submission.csv",
         "tests/test_data/test2_submission.csv",
     ]
-    assert expected_submission_list.sort() == obtained_submission_list.sort()
+    assert sorted(expected_submission_list) == sorted(obtained_submission_list)
