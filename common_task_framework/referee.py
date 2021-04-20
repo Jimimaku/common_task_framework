@@ -42,8 +42,9 @@ class Referee:
 
     def get_example_submission(self):
         testing_length = self.get_testing_length()
-        example_submission = self.data.iloc[-testing_length:, self.data.columns == "id"]
+        example_submission = self.get_testing_dataset().copy()
         example_submission["target"] = np.random.rand(testing_length)
+        example_submission = example_submission[["target"]]
         return example_submission
 
     def get_behind_the_wall_solution(self):
