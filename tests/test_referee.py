@@ -145,7 +145,7 @@ def test_load_submission():
     assert expected_length == obtained_length
 
 
-def test_mean_absolute_error():
+def test_get_mean_absolute_error():
     obtained_mean_absolute_error = round(ctf.get_mean_absolute_error(path_to_submission), 16)
     expected_mean_absolute_error = 0.4246
     assert expected_mean_absolute_error == obtained_mean_absolute_error
@@ -160,3 +160,21 @@ def test_get_submission_list():
         "tests/test_data/test2_submission.csv",
     ]
     assert sorted(expected_submission_list) == sorted(obtained_submission_list)
+
+
+def test_get_mean_absolute_error_list():
+    obtained_mean_absolute_error_list = ctf.get_mean_absolute_error_list(
+        path_to_submission_directory
+    )
+    expected_mean_absolute_error_list = pd.DataFrame(columns=["submission", "mean_absolute_error"])
+    expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
+        {"submission": "tests/test_data/test2_submission.csv", "mean_absolute_error": 0.2446},
+        ignore_index=True,
+    )
+    expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
+        {"submission": "tests/test_data/test_submission.csv", "mean_absolute_error": 0.4246},
+        ignore_index=True,
+    )
+    pd.testing.assert_frame_equal(
+        expected_mean_absolute_error_list, obtained_mean_absolute_error_list
+    )
