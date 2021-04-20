@@ -50,7 +50,7 @@ def test_get_example_submission():
     expected_rows = ctf.get_testing_length()
     assert expected_rows == obtained_rows
     obtained_column_names = list(example_submission.columns)
-    expected_column_names = ["id", "target"]
+    expected_column_names = ["target"]
     assert expected_column_names == obtained_column_names
     obtained_example_target = example_submission["target"].iloc[0]
     assert obtained_example_target >= 0
@@ -62,7 +62,7 @@ def test_get_behind_the_wall_solution():
     expected_rows = ctf.get_testing_length()
     assert expected_rows == obtained_rows
     obtained_column_names = list(solution.columns)
-    expected_column_names = ["id", "target"]
+    expected_column_names = ["target"]
     assert expected_column_names == obtained_column_names
     obtained_solution_target = solution["target"].iloc[0]
     expected_solution_target = ctf.data["target"].iloc[ctf.get_training_length()]
@@ -144,6 +144,6 @@ def test_load_submission():
 
 
 def test_mean_absolute_error():
-    obtained_mean_absolute_error = ctf.get_mean_absolute_error(path_to_submission)
-    expected_mean_absolute_error = -1
+    obtained_mean_absolute_error = round(ctf.get_mean_absolute_error(path_to_submission), 16)
+    expected_mean_absolute_error = 0.4246
     assert expected_mean_absolute_error == obtained_mean_absolute_error
