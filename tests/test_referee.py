@@ -4,6 +4,7 @@ import pandas as pd
 
 path_to_complete_dataset = "tests/test_data/complete_dataset.csv"
 ctf = common_task_framework.Referee(path_to_complete_dataset)
+path_to_submission = "tests/test_data/test_submission.csv"
 
 
 def test_load_complete_dataset():
@@ -136,8 +137,13 @@ def test_init():
 
 
 def test_load_submission():
-    submission_path = "tests/test_data/test_submission.csv"
-    submission = common_task_framework.load_submission(submission_path)
+    submission = common_task_framework.load_submission(path_to_submission)
     obtained_length = len(submission)
     expected_length = ctf.get_testing_length()
     assert expected_length == obtained_length
+
+
+def test_mean_absolute_error():
+    obtained_mean_absolute_error = ctf.get_mean_absolute_error(path_to_submission)
+    expected_mean_absolute_error = -1
+    assert expected_mean_absolute_error == obtained_mean_absolute_error
