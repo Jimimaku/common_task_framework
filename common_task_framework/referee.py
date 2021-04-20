@@ -112,5 +112,8 @@ class Referee:
             mae = self.get_mean_absolute_error(submission)
             row = {"submission": submission, "mean_absolute_error": mae}
             mean_absolute_error_list = mean_absolute_error_list.append(row, ignore_index=True)
-        print(mean_absolute_error_list)
         return mean_absolute_error_list
+
+    def evaluate_submission_directory(self, path_to_submission_directory):
+        mean_absolute_error_list = self.get_mean_absolute_error_list(path_to_submission_directory)
+        print(mean_absolute_error_list.to_markdown(index=False))
