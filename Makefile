@@ -1,13 +1,11 @@
-tests:
-	shellspec
-	pytest --verbose
+all: check coverage mutants
 
 .PHONY: \
 		check \
 		clean \
 		coverage \
 		format \
-		install \
+		setup \
 		linter \
 		mutants \
 		tests
@@ -46,7 +44,7 @@ clean:
 	rm --force tests/test.csv
 	rm --force tests/train.csv
 
-coverage: install
+coverage: setup
 	pytest --cov=${module} --cov-report=xml --verbose && \
 	codecov --token=${codecov_token}
 
@@ -54,12 +52,16 @@ format:
 	black --line-length 100 ${module}
 	black --line-length 100 tests
 
-install:
+setup:
 	pip install --editable .
 
 linter:
 	$(call lint, ${module})
 	$(call lint, tests)
 
-mutants: install
+mutants: setup
 	mutmut run --paths-to-mutate ${module} --runner "make tests"
+
+tests:
+	shellspec
+	pytest --verbose
