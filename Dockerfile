@@ -2,6 +2,7 @@ FROM python:latest
 WORKDIR /workdir
 COPY . .
 RUN pip install \
+    . \
     black \
     codecov \
     flake8 \
