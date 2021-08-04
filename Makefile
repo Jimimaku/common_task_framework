@@ -63,5 +63,5 @@ mutants: setup
 	mutmut run --paths-to-mutate ${module} --runner "make tests"
 
 tests:
-	shellspec
+	shellspec --shell bash tests
 	pytest --verbose
