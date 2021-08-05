@@ -1,13 +1,9 @@
-name: 🏝️ Tests
+name: Tests
 on:
   pull_request:
     branches:
       - develop
-      - master
-  push:
-    branches:
-      - develop
-      - master
+      - main
 jobs:
   actions:
     runs-on: ubuntu-latest
