@@ -35,12 +35,12 @@ clean:
 	rm --force .mutmut-cache
 	rm --force coverage.xml
 	rm --force tests/example_submission.csv
-	rm --force tests/test_data/example_submission.csv
-	rm --force tests/test_data/test.csv
-	rm --force tests/test_data/train.csv
-	rm --force tests/test_data/XXexample_submission.csvXX
-	rm --force tests/test_data/XXtest.csvXX
-	rm --force tests/test_data/XXtrain.csvXX
+	rm --force tests/test_dataset1/example_submission.csv
+	rm --force tests/test_dataset1/test.csv
+	rm --force tests/test_dataset1/train.csv
+	rm --force tests/test_dataset1/XXexample_submission.csvXX
+	rm --force tests/test_dataset1/XXtest.csvXX
+	rm --force tests/test_dataset1/XXtrain.csvXX
 	rm --force tests/test.csv
 	rm --force tests/train.csv
 
