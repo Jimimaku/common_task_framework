@@ -5,10 +5,12 @@ all: check coverage mutants
 		clean \
 		coverage \
 		format \
-		setup \
 		linter \
 		mutants \
-		tests
+		setup \
+		tests \
+		tests_python \
+		tests_shell
 
 module = common_task_framework
 codecov_token = 69abd834-7dd6-4667-8a12-42505381624d
@@ -60,8 +62,12 @@ linter:
 	$(call lint, tests)
 
 mutants: setup
-	mutmut run --paths-to-mutate ${module} --runner "make tests"
+	mutmut run --paths-to-mutate ${module}
 
-tests:
-	shellspec --shell bash tests
+tests: tests_python tests_shell
+
+tests_python:
 	pytest --verbose
+
+tests_shell:
+	shellspec --shell bash tests
