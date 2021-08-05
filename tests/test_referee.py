@@ -152,9 +152,7 @@ def test_get_mean_absolute_error():
 
 
 def test_get_submission_list():
-    obtained_submission_list = get_submission_list(
-        path_to_submission_directory
-    )
+    obtained_submission_list = get_submission_list(path_to_submission_directory)
     expected_submission_list = [
         "tests/test_dataset1/test_submission.csv",
         "tests/test_dataset1/test2_submission.csv",
