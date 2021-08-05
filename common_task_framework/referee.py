@@ -77,11 +77,13 @@ class Referee:
     def save_training_dataset(self):
         training_dataset = self.get_training_dataset()
         path_to_training = self.get_training_path()
+        training_dataset = training_dataset.fillna('NA')
         training_dataset.to_csv(path_to_training)
 
     def save_testing_dataset(self):
         testing_dataset = self.get_testing_dataset()
         path_to_testing = self.get_testing_path()
+        testing_dataset = testing_dataset.fillna('NA')
         testing_dataset.to_csv(path_to_testing)
 
     def save_example_submission(self):
