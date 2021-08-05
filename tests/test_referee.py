@@ -1,9 +1,9 @@
-import common_task_framework
+from ..common_task_framework import get_submission_list, load_submission, Referee
 import os
 import pandas as pd
 
 path_to_complete_dataset = "tests/test_dataset1/complete_dataset.csv"
-ctf = common_task_framework.Referee(path_to_complete_dataset)
+ctf = Referee(path_to_complete_dataset)
 path_to_submission = "tests/test_dataset1/test_submission.csv"
 path_to_submission_directory = "tests/test_dataset1"
 
@@ -139,7 +139,7 @@ def test_init():
 
 
 def test_load_submission():
-    submission = common_task_framework.load_submission(path_to_submission)
+    submission = load_submission(path_to_submission)
     obtained_length = len(submission)
     expected_length = ctf.get_testing_length()
     assert expected_length == obtained_length
@@ -152,7 +152,7 @@ def test_get_mean_absolute_error():
 
 
 def test_get_submission_list():
-    obtained_submission_list = common_task_framework.get_submission_list(
+    obtained_submission_list = get_submission_list(
         path_to_submission_directory
     )
     expected_submission_list = [
