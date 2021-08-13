@@ -55,14 +55,16 @@ format:
 	black --line-length 100 tests
 
 setup:
-	pip install --editable .
+	pip install .
 
 linter:
 	$(call lint, ${module})
 	$(call lint, tests)
 
 mutants: setup
-	mutmut run --paths-to-mutate ${module}
+	mutmut run \
+	--paths-to-mutate ${module} \
+	--runner "make tests"
 
 tests: tests_python tests_shell
 
