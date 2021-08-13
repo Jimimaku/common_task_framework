@@ -55,7 +55,7 @@ format:
 	black --line-length 100 tests
 
 setup:
-	pip uninstall --yes common_task_framework
+	pip uninstall --yes ${module}
 	pip install --editable .
 
 linter:
