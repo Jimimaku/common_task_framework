@@ -1,5 +1,4 @@
 from ..common_task_framework import get_submission_list, load_submission, Referee
-import os
 import pandas as pd
 
 path_to_complete_dataset = "tests/test_dataset2/complete_dataset.csv"
