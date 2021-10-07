@@ -64,7 +64,7 @@ def test_load_submission():
 
 def test_get_mean_absolute_error():
     obtained_mean_absolute_error = round(ctf.get_mean_absolute_error(path_to_submission), 16)
-    expected_mean_absolute_error = 0.4246
+    expected_mean_absolute_error = 9.5
     assert expected_mean_absolute_error == obtained_mean_absolute_error
 
 
@@ -83,11 +83,11 @@ def test_get_mean_absolute_error_list():
     )
     expected_mean_absolute_error_list = pd.DataFrame(columns=["submission", "mean_absolute_error"])
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset2/test2_submission.csv", "mean_absolute_error": 0.2446},
+        {"submission": "tests/test_dataset2/test2_submission.csv", "mean_absolute_error": 20.5},
         ignore_index=True,
     )
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset2/test_submission.csv", "mean_absolute_error": 0.4246},
+        {"submission": "tests/test_dataset2/test_submission.csv", "mean_absolute_error": 9.5},
         ignore_index=True,
     )
     pd.testing.assert_frame_equal(
