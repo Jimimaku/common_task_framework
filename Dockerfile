@@ -1,4 +1,4 @@
-FROM python:latest
+FROM python:3.9
 WORKDIR /workdir
 COPY . .
 # mutmut is pinned to version 2.1.0 because v2.2.0 does not work with ShellSpec
