@@ -33,7 +33,14 @@ def test_get_testing_dataset():
     expected_rows = ctf.get_testing_length()
     assert expected_rows == obtained_rows
     obtained_column_names = list(test.columns)
-    expected_column_names = ["Peso","Longitud_tarso","Longitud_ala","Longitud_pico","Longitud_pluma_interior_de_la_cola","Longitud_pluma_exterior_de_la_cola"]
+    expected_column_names = [
+        "Peso",
+        "Longitud_tarso",
+        "Longitud_ala",
+        "Longitud_pico",
+        "Longitud_pluma_interior_de_la_cola",
+        "Longitud_pluma_exterior_de_la_cola",
+    ]
     assert obtained_column_names == expected_column_names
 
 
