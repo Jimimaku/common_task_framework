@@ -7,5 +7,7 @@ ctf = Referee(path_to_complete_dataset)
 
 
 def test_load_complete_dataset():
-    with pytest.raises(ValueError, match="^There is a record with no values for any explanatory variable$"):
+    with pytest.raises(
+        ValueError, match="^There is a record with no values for any explanatory variable$"
+    ):
         ctf.load_complete_dataset()
