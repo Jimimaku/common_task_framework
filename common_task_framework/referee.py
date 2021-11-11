@@ -67,19 +67,17 @@ class Referee:
         return solution
 
     def get_training_path(self):
-        directory = str(Path(self.path_to_complete_dataset).parents[0])
-        training_path = path.join(directory, "train.csv")
-        return training_path
+        return self.__get_path("train.csv")
 
     def get_testing_path(self):
-        directory = str(Path(self.path_to_complete_dataset).parents[0])
-        testing_path = path.join(directory, "test.csv")
-        return testing_path
+        return self.__get_path("test.csv")
 
     def get_example_submission_path(self):
+        return self.__get_path("example_submission.csv")
+
+    def __get_path(self, file_csv):
         directory = str(Path(self.path_to_complete_dataset).parents[0])
-        example_submission_path = path.join(directory, "example_submission.csv")
-        return example_submission_path
+        return path.join(directory, file_csv)
 
     def save_training_dataset(self):
         training_dataset = self.get_training_dataset()
