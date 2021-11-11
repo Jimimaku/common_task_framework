@@ -23,10 +23,14 @@ class Referee:
 
     def load_complete_dataset(self):
         data = pd.read_csv(self.path_to_complete_dataset, index_col="id")
-        columns_insterest = (data.columns != "id") & (data.columns != "target")
-        if data.loc[:, columns_insterest].isnull().all(axis=1).any():
-            raise ValueError("There is a record with no values for any explanatory variable")
+        self.__check_explanatory_variables_are_not_empty(data)
         return data
+
+    def __check_explanatory_variables_are_not_empty(self, data):
+        is_column_of_insterest = data.columns != "target"
+        is_record_with_no_values = data.loc[:, is_column_of_insterest].isnull().all(axis=1).any()
+        if is_record_with_no_values:
+            raise ValueError("There is a record with no values for any explanatory variable")
 
     def get_training_length(self):
         total_length = len(self.data)

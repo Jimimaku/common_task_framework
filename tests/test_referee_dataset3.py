@@ -9,4 +9,3 @@ def test_exceptions_raised_when_no_values():
         ValueError, match="^There is a record with no values for any explanatory variable$"
     ):
         ctf = Referee(path_to_complete_dataset)
-        ctf.load_complete_dataset()
