@@ -24,7 +24,7 @@ class Referee:
     def load_complete_dataset(self):
         data = pd.read_csv(self.path_to_complete_dataset, index_col="id")
         columns_insterest = (data.columns != "id") & (data.columns != "target")
-        if data.loc[:,columns_insterest].isnull().all(axis=1).any():
+        if data.loc[:, columns_insterest].isnull().all(axis=1).any():
             raise ValueError("There is a record with no values for any explanatory variable")
         return data
 
