@@ -116,11 +116,9 @@ class Referee:
 
     def get_mean_absolute_error_list(self, path_to_submission_directory):
         submission_list = get_submission_list(path_to_submission_directory)
-        mean_absolute_error_list = pd.DataFrame(columns=["submission", "mean_absolute_error"])
-        for submission in submission_list:
-            mae = self.get_mean_absolute_error(submission)
-            row = {"submission": submission, "mean_absolute_error": mae}
-            mean_absolute_error_list = mean_absolute_error_list.append(row, ignore_index=True)
+        submission = [submission for submission in submission_list]
+        meas = [self.get_mean_absolute_error(submission) for submission in submission_list]
+        mean_absolute_error_list = pd.DataFrame.from_dict({"submission": submission, "mean_absolute_error": meas,})
         return mean_absolute_error_list.sort_values(by=["mean_absolute_error"])
 
     def evaluate_submission_directory(self, path_to_submission_directory):
