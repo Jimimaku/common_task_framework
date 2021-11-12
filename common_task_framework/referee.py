@@ -24,7 +24,7 @@ class Referee:
             "training": self.get_training_dataset(),
             "testing": self.get_testing_dataset(),
             "submission": self.get_example_submission(),
-            }
+        }
         self.__get_path_to = {
             "training": self.get_training_path(),
             "testing": self.get_testing_path(),
@@ -124,7 +124,12 @@ class Referee:
         submission_list = get_submission_list(path_to_submission_directory)
         submission = [submission for submission in submission_list]
         meas = [self.get_mean_absolute_error(submission) for submission in submission_list]
-        mean_absolute_error_list = pd.DataFrame.from_dict({"submission": submission, "mean_absolute_error": meas,})
+        mean_absolute_error_list = pd.DataFrame.from_dict(
+            {
+                "submission": submission,
+                "mean_absolute_error": meas,
+            }
+        )
         return mean_absolute_error_list.sort_values(by=["mean_absolute_error"])
 
     def evaluate_submission_directory(self, path_to_submission_directory):
