@@ -90,28 +90,19 @@ class Referee:
         return path.join(directory, file_csv)
 
     def save_training_dataset(self):
-        training_dataset = self.__get_dataset["training"]
-        path_to_training = self.__get_path_to["training"]
-        training_dataset = training_dataset.fillna("NA")
-        training_dataset.to_csv(path_to_training)
+        self.__save_dataset("training")
 
     def save_testing_dataset(self):
-        testing_dataset = self.__get_dataset["testing"]
-        path_to_testing = self.__get_path_to["testing"]
-        testing_dataset = testing_dataset.fillna("NA")
-        testing_dataset.to_csv(path_to_testing)
+        self.__save_dataset("testing")
 
     def save_example_submission(self):
-        example_submission = self.__get_dataset["submission"]
-        path_to_example_submission = self.__get_path_to["submission"]
-        example_submission = example_submission.fillna("NA")
-        example_submission.to_csv(path_to_example_submission)
+        self.__save_dataset("submission")
 
-    def sale_dataset(self, csv):
+    def __save_dataset(self, csv):
         dataset = self.__get_dataset[csv]
         path = self.__get_path_to[csv]
         dataset = dataset.fillna("NA")
-        dataser.to_csv(path)
+        dataset.to_csv(path)
 
     def init(self):
         self.save_training_dataset()
