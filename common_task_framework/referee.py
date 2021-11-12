@@ -20,6 +20,16 @@ class Referee:
     def __init__(self, path_to_complete_dataset: str):
         self.path_to_complete_dataset = path_to_complete_dataset
         self.data = self.load_complete_dataset()
+        self.__get_dataset = {
+            "training": self.get_training_dataset(),
+            "testing": self.get_testing_dataset(),
+            "submission": self.get_example_submission(),
+            }
+        self.__get_path_to = {
+            "training": self.get_training_path(),
+            "testing": self.get_testing_path(),
+            "submission": self.get_example_submission_path(),
+        }
 
     def load_complete_dataset(self):
         data = pd.read_csv(self.path_to_complete_dataset, index_col="id")
@@ -80,21 +90,28 @@ class Referee:
         return path.join(directory, file_csv)
 
     def save_training_dataset(self):
-        training_dataset = self.get_training_dataset()
-        path_to_training = self.get_training_path()
+        training_dataset = self.__get_dataset["training"]
+        path_to_training = self.__get_path_to["training"]
         training_dataset = training_dataset.fillna("NA")
         training_dataset.to_csv(path_to_training)
 
     def save_testing_dataset(self):
-        testing_dataset = self.get_testing_dataset()
-        path_to_testing = self.get_testing_path()
+        testing_dataset = self.__get_dataset["testing"]
+        path_to_testing = self.__get_path_to["testing"]
         testing_dataset = testing_dataset.fillna("NA")
         testing_dataset.to_csv(path_to_testing)
 
     def save_example_submission(self):
-        example_submission = self.get_example_submission()
-        path_to_example_submission = self.get_example_submission_path()
+        example_submission = self.__get_dataset["submission"]
+        path_to_example_submission = self.__get_path_to["submission"]
+        example_submission = example_submission.fillna("NA")
         example_submission.to_csv(path_to_example_submission)
+
+    def sale_dataset(self, csv):
+        dataset = self.__get_dataset[csv]
+        path = self.__get_path_to[csv]
+        dataset = dataset.fillna("NA")
+        dataser.to_csv(path)
 
     def init(self):
         self.save_training_dataset()
