@@ -10,7 +10,7 @@ jobs:
     - name: Copia repositorio
       uses: actions/checkout@v2
     - name: Construye imagen
-      run: docker build --tag islasgeci/common_task_framework:latest --tag islasgeci/common_task_framework:${GITHUB_SHA:0:4} .
+      run: docker build --tag islasgeci/common_task_framework:latest .
     - name: Verifica el formato
       run: docker run islasgeci/common_task_framework:latest make check
     - name: Corre pruebas y evalúa cobertura
