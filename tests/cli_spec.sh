@@ -26,7 +26,7 @@ Describe "geci-ctf"
 
   It "evaluates a directory"
     When call geci-ctf evaluate tests/test_dataset_simple/complete_dataset.csv tests/test_dataset_simple --directory
-    The first line of output should equal "| submission                               |   mean_absolute_error |"
+    The first line of output should equal "| submission                                     |   mean_absolute_error |"
     The fourth line of output should include "| tests/test_dataset_simple/test_submission.csv  |                0.4246 |"
   End
 
