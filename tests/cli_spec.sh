@@ -23,7 +23,7 @@ Describe "geci-ctf"
     The first line of output should equal "Submission: tests/test_dataset_simple/test_submission.csv"
     The second line of output should include "Mean absolute error: 0.4246"
   End
-  
+
   It "evaluates a directory"
     When call geci-ctf evaluate tests/test_dataset_simple/complete_dataset.csv tests/test_dataset_simple --directory
     The first line of output should equal "| submission                               |   mean_absolute_error |"
