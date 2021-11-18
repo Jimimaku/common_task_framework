@@ -1,10 +1,10 @@
 from ..common_task_framework import get_submission_list, load_submission, Referee
 import pandas as pd
 
-path_to_complete_dataset = "tests/test_dataset2/complete_dataset.csv"
+path_to_complete_dataset = "tests/test_dataset_pollos_petrel/complete_dataset.csv"
 ctf = Referee(path_to_complete_dataset)
-path_to_submission = "tests/test_dataset2/test_a_submission.csv"
-path_to_submission_directory = "tests/test_dataset2"
+path_to_submission = "tests/test_dataset_pollos_petrel/test_a_submission.csv"
+path_to_submission_directory = "tests/test_dataset_pollos_petrel"
 
 
 def test_load_complete_dataset():
@@ -45,19 +45,19 @@ def test_get_testing_dataset():
 
 def test_get_training_path():
     obtained_path = ctf.get_training_path()
-    expected_path = "tests/test_dataset2/train.csv"
+    expected_path = "tests/test_dataset_pollos_petrel/train.csv"
     assert expected_path == obtained_path
 
 
 def test_get_testing_path():
     obtained_path = ctf.get_testing_path()
-    expected_path = "tests/test_dataset2/test.csv"
+    expected_path = "tests/test_dataset_pollos_petrel/test.csv"
     assert expected_path == obtained_path
 
 
 def test_get_example_submission_path():
     obtained_path = ctf.get_example_submission_path()
-    expected_path = "tests/test_dataset2/example_submission.csv"
+    expected_path = "tests/test_dataset_pollos_petrel/example_submission.csv"
     assert expected_path == obtained_path
 
 
@@ -77,8 +77,8 @@ def test_get_mean_absolute_error():
 def test_get_submission_list():
     obtained_submission_list = get_submission_list(path_to_submission_directory)
     expected_submission_list = [
-        "tests/test_dataset2/test_a_submission.csv",
-        "tests/test_dataset2/test_b_submission.csv",
+        "tests/test_dataset_pollos_petrel/test_a_submission.csv",
+        "tests/test_dataset_pollos_petrel/test_b_submission.csv",
     ]
     assert sorted(expected_submission_list) == sorted(obtained_submission_list)
 
@@ -89,11 +89,11 @@ def test_get_mean_absolute_error_list():
     )
     expected_mean_absolute_error_list = pd.DataFrame(columns=["submission", "mean_absolute_error"])
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset2/test_a_submission.csv", "mean_absolute_error": 9.5},
+        {"submission": "tests/test_dataset_pollos_petrel/test_a_submission.csv", "mean_absolute_error": 9.5},
         ignore_index=True,
     )
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset2/test_b_submission.csv", "mean_absolute_error": 20.5},
+        {"submission": "tests/test_dataset_pollos_petrel/test_b_submission.csv", "mean_absolute_error": 20.5},
         ignore_index=True,
     )
     pd.testing.assert_frame_equal(
