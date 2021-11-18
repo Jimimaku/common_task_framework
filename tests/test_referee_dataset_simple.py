@@ -166,11 +166,17 @@ def test_get_mean_absolute_error_list():
     )
     expected_mean_absolute_error_list = pd.DataFrame(columns=["submission", "mean_absolute_error"])
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset_simple/test2_submission.csv", "mean_absolute_error": 0.2446},
+        {
+            "submission": "tests/test_dataset_simple/test2_submission.csv",
+            "mean_absolute_error": 0.2446,
+        },
         ignore_index=True,
     )
     expected_mean_absolute_error_list = expected_mean_absolute_error_list.append(
-        {"submission": "tests/test_dataset_simple/test_submission.csv", "mean_absolute_error": 0.4246},
+        {
+            "submission": "tests/test_dataset_simple/test_submission.csv",
+            "mean_absolute_error": 0.4246,
+        },
         ignore_index=True,
     )
     pd.testing.assert_frame_equal(
