@@ -43,4 +43,10 @@ Describe "geci-ctf"
     The second line of output should equal "B6-2012-08-25,9.8,12.3,14.0,8.1,NA,NA,1.0"
     The line 9 of output should equal "B6-2012-09-01,22.5,NA,NA,NA,NA,NA,8.0"
   End
+
+  It "fails to partition when all values are NA"
+    When call geci-ctf init tests/test_dataset_na/complete_dataset.csv
+    The status should be failure
+    The error should include "There is a record with no values for any explanatory variable"
+  End
 End
