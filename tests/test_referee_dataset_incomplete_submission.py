@@ -125,19 +125,6 @@ def test_save_example_submission():
     os.remove(path_to_example_submission)
 
 
-def test_init():
-    ctf.init()
-    path_to_training = ctf.get_training_path()
-    assert os.path.exists(path_to_training)
-    os.remove(path_to_training)
-    path_to_testing = ctf.get_testing_path()
-    assert os.path.exists(path_to_testing)
-    os.remove(path_to_testing)
-    path_to_example_submission = ctf.get_example_submission_path()
-    assert os.path.exists(path_to_example_submission)
-    os.remove(path_to_example_submission)
-
-
 def test_load_submission():
     submission = load_submission(path_to_submission)
     obtained_length = len(submission)
@@ -149,5 +136,7 @@ def test_get_submission_list():
     obtained_submission_list = get_submission_list(path_to_submission_directory)
     expected_submission_list = [
         path_to_submission_directory + "incomplete_submission.csv",
+        path_to_submission_directory + "overfull_submission.csv",
+        path_to_submission_directory + "unexpected_submission.csv",
     ]
     assert sorted(expected_submission_list) == sorted(obtained_submission_list)
