@@ -15,10 +15,6 @@ def test_load_complete_dataset():
     assert expected_length == obtained_length
 
 
-def test_get_training_length():
-    obtained_length = ctf.get_training_length()
-    expected_length = round(27 * 0.8)
-    assert expected_length == obtained_length
 
 
 def test_get_testing_length():
@@ -27,13 +23,6 @@ def test_get_testing_length():
     assert expected_length == obtained_length
 
 
-def test_get_training_dataset():
-    train = ctf.get_training_dataset()
-    obtained_rows, obtained_cols = train.shape
-    expected_rows = ctf.get_training_length()
-    assert expected_rows == obtained_rows
-    expected_cols = ctf.data.shape[1]
-    assert expected_cols == obtained_cols
 
 
 def test_get_testing_dataset():
@@ -71,10 +60,6 @@ def test_get_behind_the_wall_solution():
     assert expected_solution_target == obtained_solution_target
 
 
-def test_get_training_path():
-    obtained_path = ctf.get_training_path()
-    expected_path = path_to_submission_directory + "train.csv"
-    assert expected_path == obtained_path
 
 
 def test_get_testing_path():
@@ -89,16 +74,6 @@ def test_get_example_submission_path():
     assert expected_path == obtained_path
 
 
-def test_save_training_dataset():
-    path_to_training = ctf.get_training_path()
-    if os.path.exists(path_to_training):
-        os.remove(path_to_training)
-    ctf.save_training_dataset()
-    assert os.path.exists(path_to_training)
-    obtained_first_column = pd.read_csv(path_to_training).columns[0]
-    expected_first_column = "id"
-    assert expected_first_column == obtained_first_column
-    os.remove(path_to_training)
 
 
 def test_save_testing_dataset():
