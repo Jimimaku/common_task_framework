@@ -52,7 +52,8 @@ def test_get_behind_the_wall_solution():
     expected_column_names = ["target"]
     assert expected_column_names == obtained_column_names
     obtained_solution_target = solution["target"].iloc[0]
-    expected_solution_target = ctf.data["target"].iloc[ctf.get_training_length()]
+    ind_solution_first_row = ctf.get_training_length()
+    expected_solution_target = ctf.data["target"].iloc[ind_solution_first_row]
     assert expected_solution_target == obtained_solution_target
 
 
