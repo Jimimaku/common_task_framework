@@ -15,14 +15,10 @@ def test_load_complete_dataset():
     assert expected_length == obtained_length
 
 
-
-
 def test_get_testing_length():
     obtained_length = ctf.get_testing_length()
     expected_length = round(27 * 0.2)
     assert expected_length == obtained_length
-
-
 
 
 def test_get_testing_dataset():
@@ -58,22 +54,6 @@ def test_get_behind_the_wall_solution():
     obtained_solution_target = solution["target"].iloc[0]
     expected_solution_target = ctf.data["target"].iloc[ctf.get_training_length()]
     assert expected_solution_target == obtained_solution_target
-
-
-
-
-def test_get_testing_path():
-    obtained_path = ctf.get_testing_path()
-    expected_path = path_to_submission_directory + "test.csv"
-    assert expected_path == obtained_path
-
-
-def test_get_example_submission_path():
-    obtained_path = ctf.get_example_submission_path()
-    expected_path = path_to_submission_directory + "example_submission.csv"
-    assert expected_path == obtained_path
-
-
 
 
 def test_save_testing_dataset():
