@@ -111,10 +111,16 @@ class Referee:
 
     def get_mean_absolute_error(self, path_to_submission):
         solution = self.get_behind_the_wall_solution()
-        submission = load_submission(path_to_submission)
+        submission = self.__load_if_submission_is_correct(solution, path_to_submission)
         error = solution["target"] - submission["target"]
         mean_absolute_error = error.abs().mean()
         return mean_absolute_error
+    
+    def __load_if_submission_is_correct(self, solution, path_to_submission):
+        submission = load_submission(path_to_submission)
+        if len(solution) != len(submission):
+            raise ValueError("FATAL ERROR")
+        return submission
 
     def evaluate_single_submission(self, path_to_submission):
         mean_absolute_error = self.get_mean_absolute_error(path_to_submission)
