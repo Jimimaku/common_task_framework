@@ -1,6 +1,7 @@
 from ..common_task_framework import get_submission_list, load_submission, Referee
 import os
 import pandas as pd
+import pytest
 
 path_to_submission_directory = "tests/test_dataset_incomplete_submission/"
 path_to_complete_dataset = path_to_submission_directory + "complete_dataset.csv"
@@ -82,10 +83,10 @@ def test_save_example_submission():
 
 
 def test_load_submission():
-    submission = load_submission(path_to_submission)
-    obtained_length = len(submission)
-    expected_length = ctf.get_testing_length()
-    assert expected_length == obtained_length
+    with pytest.raises(
+        ValueError, match="^There is a record with no values for any explanatory variable$"
+    ):
+        ctf.get_mean_absolute_error(path_to_submission)
 
 
 def test_get_submission_list():
