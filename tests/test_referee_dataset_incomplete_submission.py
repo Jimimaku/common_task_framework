@@ -58,31 +58,9 @@ def test_get_behind_the_wall_solution():
     assert expected_solution_target == obtained_solution_target
 
 
-def test_save_testing_dataset():
-    path_to_testing = ctf.get_testing_path()
-    if os.path.exists(path_to_testing):
-        os.remove(path_to_testing)
-    ctf.save_testing_dataset()
-    assert os.path.exists(path_to_testing)
-    obtained_first_column = pd.read_csv(path_to_testing).columns[0]
-    expected_first_column = "id"
-    assert expected_first_column == obtained_first_column
-    os.remove(path_to_testing)
-
-
-def test_save_example_submission():
-    path_to_example_submission = ctf.get_example_submission_path()
-    if os.path.exists(path_to_example_submission):
-        os.remove(path_to_example_submission)
-    ctf.save_example_submission()
-    assert os.path.exists(path_to_example_submission)
-    obtained_first_column = pd.read_csv(path_to_example_submission).columns[0]
-    expected_first_column = "id"
-    assert expected_first_column == obtained_first_column
-    os.remove(path_to_example_submission)
-
-
-def test_load_submission():
+@pytest.mark.parametrize("file", ["incomplete_submission.csv","overfull_submission.csv","unexpected_submission.csv"])
+def test_load_submission(file):
+    path_to_submission = path_to_submission_directory + file
     with pytest.raises(
         ValueError, match="^There is a record with no values for any explanatory variable$"
     ):
