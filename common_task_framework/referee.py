@@ -118,8 +118,8 @@ class Referee:
     
     def __load_if_submission_is_correct(self, solution, path_to_submission):
         submission = load_submission(path_to_submission)
-        if len(solution) != len(submission):
-            raise ValueError("FATAL ERROR")
+        if set(solution.index) != set(submission.index):
+            raise ValueError("La propuesta a solución no tiene la forma esperada")
         return submission
 
     def evaluate_single_submission(self, path_to_submission):

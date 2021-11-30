@@ -5,7 +5,6 @@ import pytest
 
 path_to_submission_directory = "tests/test_dataset_incomplete_submission/"
 path_to_complete_dataset = path_to_submission_directory + "complete_dataset.csv"
-path_to_submission = path_to_submission_directory + "incomplete_submission.csv"
 ctf = Referee(path_to_complete_dataset)
 
 
@@ -62,7 +61,7 @@ def test_get_behind_the_wall_solution():
 def test_load_submission(file):
     path_to_submission = path_to_submission_directory + file
     with pytest.raises(
-        ValueError, match="^There is a record with no values for any explanatory variable$"
+        ValueError, match="^La propuesta a solución no tiene la forma esperada$"
     ):
         ctf.get_mean_absolute_error(path_to_submission)
 
