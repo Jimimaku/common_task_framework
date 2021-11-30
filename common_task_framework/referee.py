@@ -115,7 +115,7 @@ class Referee:
         error = solution["target"] - submission["target"]
         mean_absolute_error = error.abs().mean()
         return mean_absolute_error
-    
+
     def __load_if_submission_is_correct(self, solution, path_to_submission):
         submission = load_submission(path_to_submission)
         if set(solution.index) != set(submission.index):
