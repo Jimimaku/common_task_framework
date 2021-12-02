@@ -1,6 +1,11 @@
-FROM python:3.9
+FROM ubuntu:latest
 WORKDIR /workdir
 COPY . .
+RUN apt update && apt install --yes \
+    curl \
+    git \
+    python3-pip
+RUN ln -s /usr/bin/python3 /usr/bin/python
 # mutmut is pinned to version 2.1.0 because v2.2.0 does not work with ShellSpec
 RUN pip install \
     . \
