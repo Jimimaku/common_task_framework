@@ -28,3 +28,9 @@ RUN curl \
     | sh -s -- --yes
 ENV PATH="/root/.local/lib/shellspec:/workdir/src:$PATH"
 RUN shellspec --init
+
+RUN curl --location https://github.com/neovim/neovim/releases/download/stable/nvim.appimage --output nvim.appimage && \
+    chmod u+x ./nvim.appimage && \
+    ./nvim.appimage --appimage-extract && \
+    ln -s /workdir/squashfs-root/usr/bin/nvim /usr/bin/vim
+
