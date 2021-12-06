@@ -19,6 +19,9 @@ RUN apt update && apt full-upgrade --yes && apt install --yes \
     pip \
     tmux
 
+# Use Python 3 as the default version of Python
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
 # Instala modulos con pip
 # mutmut is pinned to version 2.1.0 because v2.2.0 does not work with ShellSpec
 RUN pip install \
