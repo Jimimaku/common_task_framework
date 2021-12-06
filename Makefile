@@ -1,19 +1,18 @@
-all: check coverage mutants
+all: check init mutants
 
 .PHONY: \
-		check \
-		clean \
-		coverage \
-		format \
-		linter \
-		mutants \
-		setup \
-		tests \
-		tests_python \
-		tests_shell
+        check \
+        clean \
+        format \
+        init \
+        linter \
+        mutants \
+        setup \
+        tests \
+        tests_python \
+        tests_shell
 
 module = common_task_framework
-codecov_token = 69abd834-7dd6-4667-8a12-42505381624d
 
 define lint
 	pylint \
@@ -35,28 +34,25 @@ clean:
 	rm --force --recursive ${module}/__pycache__
 	rm --force --recursive tests/__pycache__
 	rm --force .mutmut-cache
-	rm --force coverage.xml
 	rm --force tests/example_submission.csv
-	rm --force tests/test_dataset1/example_submission.csv
-	rm --force tests/test_dataset1/test.csv
-	rm --force tests/test_dataset1/train.csv
+	rm --force tests/test.csv
 	rm --force tests/test_dataset1/XXexample_submission.csvXX
 	rm --force tests/test_dataset1/XXtest.csvXX
 	rm --force tests/test_dataset1/XXtrain.csvXX
-	rm --force tests/test.csv
+	rm --force tests/test_dataset1/example_submission.csv
+	rm --force tests/test_dataset1/test.csv
+	rm --force tests/test_dataset1/train.csv
 	rm --force tests/train.csv
-
-coverage: setup
-	pytest --cov=${module} --cov-report=xml --verbose && \
-	codecov --token=${codecov_token}
 
 format:
 	black --line-length 100 ${module}
 	black --line-length 100 tests
 
+init: setup tests
+
 setup:
 	pip uninstall --yes ${module}
-	pip install --editable .
+	pip install .
 
 linter:
 	$(call lint, ${module})
@@ -64,8 +60,8 @@ linter:
 
 mutants: setup
 	mutmut run \
-	--paths-to-mutate ${module} \
-	--runner "make tests"
+        --paths-to-mutate ${module} \
+        --runner "make tests"
 
 tests: tests_python tests_shell
 
