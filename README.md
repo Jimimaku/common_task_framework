@@ -4,10 +4,3 @@
 
 Common Task Framework (CTF) is the methodology that [IslasGECI](https://github.com/IslasGECI) uses
 to compare the predictive ability of multiple machine learning algorithms.
-
-Falta agregar las dependencias siguientes:
-
-- tabulate
-- typer
-- pandas
-
