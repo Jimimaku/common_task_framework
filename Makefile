@@ -50,7 +50,7 @@ format:
 
 init: setup tests
 
-setup:
+setup: clean
 	pip uninstall --yes ${module}
 	pip install .
 
