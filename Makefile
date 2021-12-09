@@ -63,10 +63,7 @@ mutants: setup
         --paths-to-mutate ${module} \
         --runner "make tests"
 
-tests: tests_python tests_shell
-
-tests_python:
-	pytest --verbose
+tests: tests_shell
 
 tests_shell:
 	shellspec --shell bash tests
