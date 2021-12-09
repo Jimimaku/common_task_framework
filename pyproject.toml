@@ -10,8 +10,7 @@ description-file = "README.md"
 home-page = "https://github.com/IslasGECI/common_task_framework"
 module = "common_task_framework"
 requires = [
-    "pandas",
-    "tabulate",
+    "git+https://github.com/IslasGECI/ctf.git",
     "typer",
 ]
 requires-python=">=3.8"
