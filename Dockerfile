@@ -51,3 +51,4 @@ RUN mkdir --parents ${HOME}/repos && \
     git --git-dir=${HOME}/repos/dotfiles.git --work-tree=${HOME} checkout && \
     git --git-dir=${HOME}/repos/dotfiles.git --work-tree=${HOME} config --local status.showUntrackedFiles no
 
+RUN make setup
