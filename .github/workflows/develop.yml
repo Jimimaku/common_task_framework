@@ -13,7 +13,7 @@ jobs:
       run: docker build --tag islasgeci/common_task_framework:latest --tag islasgeci/common_task_framework:${GITHUB_SHA:0:4} .
     - name: Verifica el formato
       run: docker run islasgeci/common_task_framework:latest make check
-    - name: Corre pruebas y evalúa cobertura
+    - name: Corre pruebas
       run: docker run islasgeci/common_task_framework:latest make init
     - name: Evalúa resistencia a mutaciones
       run: docker run islasgeci/common_task_framework:latest make mutants
