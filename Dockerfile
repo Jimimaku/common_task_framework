@@ -12,6 +12,8 @@ ENV TZ=US/Pacific
 
 # Instala paquetes en el sistema operativo
 RUN apt update && apt full-upgrade --yes && apt install --yes \
+    curl \
+    git \
     pip
 
 # Use Python 3 as the default version of Python
